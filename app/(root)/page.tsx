@@ -21,7 +21,10 @@ const SearchIcon = () => (
 );
 
 
-export default function Home() {
+export default async function Home({searchParams}:{
+  searchParams:Promise<{query?:string}>
+}) {
+  const query =(await searchParams).query;
   return (
     <>
       {/* This main container sets up the primary background color and the vertical stripe pattern.
@@ -29,7 +32,8 @@ export default function Home() {
         to cover the white space left by the parent layout's padding.
       */}
       <main
-        className="flex min-h-screen w-full justify-center bg-[#ee2b69] px-4 font-['Work_Sans'] -mt-6"
+        className="flex h-[550px] w-full justify-center bg-[#ee2b69] px-4 font-['Work_Sans'] -mt-6"
+
         style={{
           backgroundImage: 'repeating-linear-gradient(to right, transparent 0 30px, rgba(0,0,0,0.05) 30px 32px)',
         }}
@@ -76,7 +80,7 @@ export default function Home() {
                 <SearchIcon />
               </button>
             </div> */}
-            <SearchForm/>
+            <SearchForm query={query} />
           </div>
         </div>
       </main>

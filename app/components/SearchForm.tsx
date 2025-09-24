@@ -18,12 +18,12 @@ const SearchIcon = () => (
   </svg>
 );
 
-const SearchForm = () => {
-  const query = "Test"
+const SearchForm = ({query}:{query?: string}) => {
+
   return (
     <Form action="/" scroll={false} 
     placeholder="SEARCH STARTUP"
-    className='w-full rounded-full border-[3px] border-black bg-white py-4 pl-6 pr-20 font-bold text-black placeholder:font-bold placeholder:text-black/70 focus:outline-none shadow-[4px_4px_0px_0px_#000]'>
+    className='  my-form w-full rounded-full border-[3px] border-black bg-white py-4 pl-6 pr-20 font-bold text-black placeholder:font-bold placeholder:text-black/70 focus:outline-none shadow-[4px_4px_0px_0px_#000]'>
       <input
       name='query'
       defaultValue={query}
