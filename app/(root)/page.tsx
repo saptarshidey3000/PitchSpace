@@ -1,4 +1,6 @@
 import React from 'react';
+import SearchForm from '../components/SearchForm';
+ 
 
 // A simple SVG icon for the search button.
 const SearchIcon = () => (
@@ -64,7 +66,7 @@ export default function Home() {
             It features a thick border and an offset box-shadow for a chunky, tactile feel.
           */}
           <div className="relative mt-8 w-full max-w-2xl">
-            <input
+            {/* <input
               type="text"
               placeholder="SEARCH STARTUP"
               className="w-full rounded-full border-[3px] border-black bg-white py-4 pl-6 pr-20 font-bold text-black placeholder:font-bold placeholder:text-black/70 focus:outline-none shadow-[4px_4px_0px_0px_#000]"
@@ -73,7 +75,8 @@ export default function Home() {
               <button className="flex h-14 w-14 items-center justify-center rounded-full bg-black text-white transition-colors hover:bg-black/80">
                 <SearchIcon />
               </button>
-            </div>
+            </div> */}
+            <SearchForm/>
           </div>
         </div>
       </main>
