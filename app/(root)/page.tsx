@@ -1,5 +1,6 @@
 import React from 'react';
 import SearchForm from '../components/SearchForm';
+import StartupCard from '../components/StartupCard';
  
 
 // A simple SVG icon for the search button.
@@ -19,6 +20,18 @@ const SearchIcon = () => (
     />
   </svg>
 );
+const posts =[
+  {
+    _createdAt : new Date(),
+    _id :1,
+    views :66,
+    author :{_id:1 , name :'Aishi'},
+    decription : "its a description",
+    image:"https://i.pinimg.com/1200x/66/15/99/661599a355100a9aab8fe7c5e6823d40.jpg",
+    catagory :"ai",
+    title:"ai revelution"
+  } ,
+];
 
 
 export default async function Home({searchParams}:{
@@ -69,7 +82,7 @@ export default async function Home({searchParams}:{
             This container positions the input field and the search button.
             It features a thick border and an offset box-shadow for a chunky, tactile feel.
           */}
-          <div className="relative mt-8 w-full max-w-2xl">
+          <div className="relative mt-1 w-full max-w-2xl">
             {/* <input
               type="text"
               placeholder="SEARCH STARTUP"
@@ -84,6 +97,23 @@ export default async function Home({searchParams}:{
           </div>
         </div>
       </main>
+      <section className='px-6 py-10 max-w-7xl mx-auto'>
+<p className="text-[30px] font-semibold">
+  {query ? `search result for "${query}"` : 'All Startups'}
+</p>
+
+<ul className="mt-7 grid md:grid-cols-3 sm:grid-cols-2 gap-5">
+  {posts && posts.length > 0 ? (
+    posts.map((post: StartupTypeCard, index: number) => (
+     <StartupCard key={post._id} post={post} />
+
+    ))
+  ) : (
+    <p>No Startup found</p>
+  )}
+</ul>
+
+      </section>
     </>
   );
 }

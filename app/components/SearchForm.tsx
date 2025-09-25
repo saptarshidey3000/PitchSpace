@@ -29,6 +29,7 @@ const SearchForm = ({query}:{query?: string}) => {
       defaultValue={query}
 
       placeholder="SEARCH STARTUP"
+       className="flex h-[19px] w-full bg-transparent font-bold text-black placeholder-black placeholder:font-bold focus:outline-none"
       />
       <div className='absolute inset-y-0 right-2 flex items-center'>
             {query && <SearchformReset/> }
