@@ -1,6 +1,8 @@
 import React from 'react';
 import SearchForm from '../components/SearchForm';
 import StartupCard from '../components/StartupCard';
+import { client } from '@/sanity/lib/client';
+import { STARTUP_QUERY } from '@/sanity/lib/queries';
  
 
 // A simple SVG icon for the search button.
@@ -20,24 +22,27 @@ const SearchIcon = () => (
     />
   </svg>
 );
-const posts =[
-  {
-    _createdAt : new Date(),
-    _id :1,
-    views :66,
-    author :{_id:1 , name :'Aishi'},
-    decription : "its a description",
-    image:"https://i.pinimg.com/1200x/66/15/99/661599a355100a9aab8fe7c5e6823d40.jpg",
-    catagory :"ai",
-    title:"ai revelution"
-  } ,
-];
+
+// const posts =[
+//   {
+//     _createdAt : new Date(),
+//     _id :1,
+//     views :66,
+//     author :{_id:1 , name :'Aishi'},
+//     decription : "its a description",
+//     image:"https://i.pinimg.com/1200x/66/15/99/661599a355100a9aab8fe7c5e6823d40.jpg",
+//     catagory :"ai",
+//     title:"ai revelution"
+//   } ,
+// ];
 
 
 export default async function Home({searchParams}:{
   searchParams:Promise<{query?:string}>
 }) {
   const query =(await searchParams).query;
+
+  const posts = await client.fetch(STARTUP_QUERY)
   return (
     <>
       {/* This main container sets up the primary background color and the vertical stripe pattern.

@@ -10,10 +10,10 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
     views,
     author: { _id: authorid, name },
     title,
-    catagory,
+    category,
     _id,
     image,
-    decription
+    description
   } = post;
 
   return (
@@ -63,20 +63,21 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
         {/* Description + Image */}
         <Link href={`/startup/${_id}`}>
           <p className='font-normal text-[14px] sm:text-[16px] line-clamp-2 my-3 text-black-100 break-all'>
-            {decription}
+            {description}
           </p>
-          <img
-            src="https://i.pinimg.com/1200x/66/15/99/661599a355100a9aab8fe7c5e6823d40.jpg"
-            alt="placeholder"
-            className='w-full h-[140px] sm:h-[164px] rounded-[10px] object-cover'
-          />
+<img
+  src={image}
+  alt={title}
+  className='w-full h-[140px] sm:h-[164px] rounded-[10px] object-cover'
+/>
+
         </Link>
 
         {/* Bottom row: category + Details button */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mt-4 sm:mt-5">
           {/* Category */}
-          <Link href={`/?query=${catagory.toLowerCase()}`}>
-            <p className="text-lg sm:text-xl font-black">{catagory}</p>
+          <Link href={`/?query=${category.toLowerCase()}`}>
+            <p className="text-lg sm:text-xl font-black">{category}</p>
           </Link>
 
           {/* Details button */}
