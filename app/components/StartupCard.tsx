@@ -2,13 +2,15 @@ import { formdate } from '@/lib/utils'
 import { EyeIcon } from 'lucide-react'
 import Link from "next/link";
 import Image from "next/image";
+import { Author, Startup } from '@/sanity/types';
+
+export type StartupTypeCard = Omit<Startup, "author"> & {author?: Author};
 
 const StartupCard = ({ post }: { post: StartupTypeCard }) => {
   const {
     _createdAt,
-    id,
     views,
-    author: { _id: authorid, name },
+    author,
     title,
     category,
     _id,
@@ -42,12 +44,12 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
             {/* Author row */}
             <div className="flex items-center justify-between mt-2">
               {/* Author name */}
-              <Link href={`/user/${authorid}`}>
-                <p className="text-[16px] sm:text-[18px] line-clamp-1">{name}</p>
+              <Link href={`/user/${author?._id}`}>
+                <p className="text-[16px] sm:text-[18px] line-clamp-1">{author?.name}</p>
               </Link>
 
               {/* Author image */}
-              <Link href={`/user/${authorid}`}>
+              <Link href={`/user/${author?._id}`}>
                 <Image
                   src="https://placehold.co/48x48"
                   alt="Author"
@@ -76,7 +78,7 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
         {/* Bottom row: category + Details button */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mt-4 sm:mt-5">
           {/* Category */}
-          <Link href={`/?query=${category.toLowerCase()}`}>
+          <Link href={`/?query=${category?.toLowerCase()}`}>
             <p className="text-lg sm:text-xl font-black">{category}</p>
           </Link>
 
