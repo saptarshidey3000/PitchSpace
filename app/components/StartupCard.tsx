@@ -44,7 +44,7 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
             {/* Author row */}
             <div className="flex items-center justify-between mt-2">
               {/* Author name */}
-              {/* <Link href={`/user/${author?._id}`}> */}
+              <Link href={`/user/${author?._id}`}>
                 <p className="text-[16px] sm:text-[18px] line-clamp-1">{author?.name}</p>
               </Link>
 
